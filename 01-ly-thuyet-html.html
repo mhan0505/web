@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1: Lý Thuyết HTML Cơ Bản</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #764ba2;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+        }
+        .theory-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .code-box {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        .code-box code {
+            color: #68d391;
+        }
+        .tag {
+            color: #fc8181;
+        }
+        .attr {
+            color: #63b3ed;
+        }
+        .value {
+            color: #faf089;
+        }
+        .result-box {
+            background: #e6fffa;
+            border: 2px dashed #38b2ac;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .result-box h4 {
+            color: #38b2ac;
+            margin-bottom: 10px;
+        }
+        .tip {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .tip strong {
+            color: #d97706;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        .home-btn {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .home-btn:hover {
+            box-shadow: 0 10px 20px rgba(26, 26, 46, 0.4);
+        }
+        .time-estimate {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bài 1: HTML Cơ Bản</h1>
+        <p class="time-estimate">Thời gian học: ~15 phút</p>
+
+        <!-- PHẦN 1: HTML LÀ GÌ -->
+        <h2>1. HTML là gì?</h2>
+        <div class="theory-box">
+            <p><strong>HTML</strong> (HyperText Markup Language) là ngôn ngữ đánh dấu dùng để tạo cấu trúc cho trang web.</p>
+            <p>HTML sử dụng các <strong>thẻ (tags)</strong> để đánh dấu nội dung.</p>
+        </div>
+
+        <!-- PHẦN 2: CẤU TRÚC CƠ BẢN -->
+        <h2>2. Cấu trúc cơ bản của trang HTML</h2>
+        <div class="code-box">
+            <pre><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="value">"vi"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Tiêu đề trang<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    Nội dung trang web ở đây
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre>
+        </div>
+
+        <div class="tip">
+            <strong>Giải thích:</strong>
+            <ul>
+                <li><code>&lt;!DOCTYPE html&gt;</code> - Khai báo đây là tài liệu HTML5</li>
+                <li><code>&lt;html&gt;</code> - Thẻ gốc chứa toàn bộ trang</li>
+                <li><code>&lt;head&gt;</code> - Chứa thông tin meta, tiêu đề, CSS...</li>
+                <li><code>&lt;body&gt;</code> - Chứa nội dung hiển thị</li>
+            </ul>
+        </div>
+
+        <!-- PHẦN 3: CÁC THẺ CƠ BẢN -->
+        <h2>3. Các thẻ HTML thường dùng</h2>
+
+        <h3>3.1 Thẻ tiêu đề (Heading)</h3>
+        <div class="code-box">
+            <pre><span class="tag">&lt;h1&gt;</span>Tiêu đề cấp 1 - Lớn nhất<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;h2&gt;</span>Tiêu đề cấp 2<span class="tag">&lt;/h2&gt;</span>
+<span class="tag">&lt;h3&gt;</span>Tiêu đề cấp 3<span class="tag">&lt;/h3&gt;</span>
+<span class="tag">&lt;h4&gt;</span>Tiêu đề cấp 4<span class="tag">&lt;/h4&gt;</span>
+<span class="tag">&lt;h5&gt;</span>Tiêu đề cấp 5<span class="tag">&lt;/h5&gt;</span>
+<span class="tag">&lt;h6&gt;</span>Tiêu đề cấp 6 - Nhỏ nhất<span class="tag">&lt;/h6&gt;</span></pre>
+        </div>
+        <div class="result-box">
+            <h4>Kết quả:</h4>
+            <h1 style="font-size: 1.5em; margin: 5px 0;">Tiêu đề cấp 1</h1>
+            <h2 style="font-size: 1.3em; margin: 5px 0; border: none;">Tiêu đề cấp 2</h2>
+            <h3 style="font-size: 1.1em; margin: 5px 0;">Tiêu đề cấp 3</h3>
+        </div>
+
+        <h3>3.2 Thẻ đoạn văn và xuống dòng</h3>
+        <div class="code-box">
+            <pre><span class="tag">&lt;p&gt;</span>Đây là một đoạn văn bản.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span>Đây là đoạn văn khác.<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>Dòng 1<span class="tag">&lt;br&gt;</span>Dòng 2 (xuống dòng)<span class="tag">&lt;/p&gt;</span></pre>
+        </div>
+
+        <h3>3.3 Định dạng văn bản</h3>
+        <div class="code-box">
+            <pre><span class="tag">&lt;strong&gt;</span>Chữ đậm<span class="tag">&lt;/strong&gt;</span>
+<span class="tag">&lt;em&gt;</span>Chữ nghiêng<span class="tag">&lt;/em&gt;</span>
+<span class="tag">&lt;u&gt;</span>Chữ gạch chân<span class="tag">&lt;/u&gt;</span>
+<span class="tag">&lt;mark&gt;</span>Chữ highlight<span class="tag">&lt;/mark&gt;</span>
+<span class="tag">&lt;del&gt;</span>Chữ gạch ngang<span class="tag">&lt;/del&gt;</span></pre>
+        </div>
+        <div class="result-box">
+            <h4>Kết quả:</h4>
+            <p>
+                <strong>Chữ đậm</strong> |
+                <em>Chữ nghiêng</em> |
+                <u>Chữ gạch chân</u> |
+                <mark>Chữ highlight</mark> |
+                <del>Chữ gạch ngang</del>
+            </p>
+        </div>
+
+        <h3>3.4 Danh sách</h3>
+        <div class="code-box">
+            <pre><span class="comment">&lt;!-- Danh sách không thứ tự --&gt;</span>
+<span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Mục 1<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Mục 2<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="comment">&lt;!-- Danh sách có thứ tự --&gt;</span>
+<span class="tag">&lt;ol&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Bước 1<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li&gt;</span>Bước 2<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ol&gt;</span></pre>
+        </div>
+        <div class="result-box">
+            <h4>Kết quả:</h4>
+            <div style="display: flex; gap: 50px;">
+                <div>
+                    <p><strong>Không thứ tự:</strong></p>
+                    <ul><li>Mục 1</li><li>Mục 2</li></ul>
+                </div>
+                <div>
+                    <p><strong>Có thứ tự:</strong></p>
+                    <ol><li>Bước 1</li><li>Bước 2</li></ol>
+                </div>
+            </div>
+        </div>
+
+        <h3>3.5 Liên kết và Hình ảnh</h3>
+        <div class="code-box">
+            <pre><span class="comment">&lt;!-- Liên kết --&gt;</span>
+<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://google.com"</span> <span class="attr">target</span>=<span class="value">"_blank"</span><span class="tag">&gt;</span>
+    Click vào đây
+<span class="tag">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- Hình ảnh --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="value">"hinh.jpg"</span> <span class="attr">alt</span>=<span class="value">"Mô tả hình"</span> <span class="attr">width</span>=<span class="value">"300"</span><span class="tag">&gt;</span></pre>
+        </div>
+
+        <div class="tip">
+            <strong>Thuộc tính quan trọng:</strong>
+            <ul>
+                <li><code>href</code> - Đường dẫn liên kết</li>
+                <li><code>target="_blank"</code> - Mở tab mới</li>
+                <li><code>src</code> - Đường dẫn hình ảnh</li>
+                <li><code>alt</code> - Mô tả khi hình không load được</li>
+            </ul>
+        </div>
+
+        <h3>3.6 Thẻ div và span</h3>
+        <div class="code-box">
+            <pre><span class="comment">&lt;!-- div: khối chứa, chiếm cả dòng --&gt;</span>
+<span class="tag">&lt;div&gt;</span>
+    Nội dung trong khối div
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- span: inline, không xuống dòng --&gt;</span>
+<span class="tag">&lt;p&gt;</span>Văn bản có <span class="tag">&lt;span</span> <span class="attr">style</span>=<span class="value">"color:red"</span><span class="tag">&gt;</span>chữ đỏ<span class="tag">&lt;/span&gt;</span> ở giữa<span class="tag">&lt;/p&gt;</span></pre>
+        </div>
+
+        <!-- BẢNG TỔNG HỢP -->
+        <h2>4. Bảng tổng hợp các thẻ</h2>
+        <table>
+            <tr>
+                <th>Thẻ</th>
+                <th>Mô tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td><code>&lt;h1&gt;-&lt;h6&gt;</code></td>
+                <td>Tiêu đề</td>
+                <td>&lt;h1&gt;Tiêu đề&lt;/h1&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;p&gt;</code></td>
+                <td>Đoạn văn</td>
+                <td>&lt;p&gt;Văn bản&lt;/p&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;a&gt;</code></td>
+                <td>Liên kết</td>
+                <td>&lt;a href="url"&gt;Link&lt;/a&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;img&gt;</code></td>
+                <td>Hình ảnh</td>
+                <td>&lt;img src="img.jpg"&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;ul&gt;/&lt;ol&gt;</code></td>
+                <td>Danh sách</td>
+                <td>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;div&gt;</code></td>
+                <td>Khối chứa</td>
+                <td>&lt;div&gt;Nội dung&lt;/div&gt;</td>
+            </tr>
+            <tr>
+                <td><code>&lt;span&gt;</code></td>
+                <td>Inline container</td>
+                <td>&lt;span&gt;text&lt;/span&gt;</td>
+            </tr>
+        </table>
+
+        <div class="navigation">
+            <a href="index.html" class="nav-btn home-btn">&uarr; Trang Chủ</a>
+            <a href="02-ly-thuyet-css.html" class="nav-btn">Bài tiếp: CSS Cơ Bản &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>

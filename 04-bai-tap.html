@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4: Bài Tập Tự Làm - Tạo Card Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #8e44ad 0%, #3498db 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .time-estimate {
+            text-align: center;
+            color: white;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 1000px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        .left-panel, .right-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .left-panel h2, .right-panel h2 {
+            color: #8e44ad;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        .requirement {
+            background: #f8f9fa;
+            border-left: 5px solid #8e44ad;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 10px 10px 0;
+        }
+        .requirement h3 {
+            color: #8e44ad;
+            margin-bottom: 10px;
+        }
+        .requirement ul {
+            margin-left: 20px;
+        }
+        .requirement li {
+            margin: 5px 0;
+        }
+        .code-editor {
+            background: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        .code-editor-header {
+            background: #323232;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .code-editor-header span {
+            color: #fff;
+            font-size: 14px;
+        }
+        .code-editor-header button {
+            background: linear-gradient(135deg, #8e44ad 0%, #3498db 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .code-editor-header button:hover {
+            transform: scale(1.05);
+        }
+        textarea {
+            width: 100%;
+            min-height: 500px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            resize: vertical;
+            outline: none;
+        }
+        .preview-header {
+            background: #f5f5f5;
+            padding: 10px 15px;
+            border-bottom: 2px solid #ddd;
+            font-weight: bold;
+            color: #666;
+            border-radius: 10px 10px 0 0;
+        }
+        .preview-content {
+            border: 2px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            min-height: 400px;
+            background: #f0f0f0;
+        }
+        iframe {
+            width: 100%;
+            min-height: 400px;
+            border: none;
+            background: white;
+        }
+        .sample-result {
+            background: #e8f4f8;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .sample-result h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        /* Sample Card để tham khảo */
+        .sample-card {
+            background: white;
+            width: 280px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .sample-card .avatar {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sample-card .avatar-circle {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #667eea;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .sample-card .info {
+            padding: 20px;
+            text-align: center;
+        }
+        .sample-card .name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .sample-card .title {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .sample-card .description {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .sample-card .skills {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .sample-card .skill {
+            background: #e8f4f8;
+            color: #3498db;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+        .sample-card .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: white;
+            color: #8e44ad;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .home-btn {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+        .congrats {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .congrats h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bài Tập Cuối: Tạo Profile Card</h1>
+        <p class="time-estimate">Thời gian hoàn thành: ~15 phút</p>
+
+        <div class="main-content">
+            <!-- LEFT: Requirements + Code Editor -->
+            <div class="left-panel">
+                <h2>Yêu cầu bài tập</h2>
+
+                <div class="requirement">
+                    <h3>Mục tiêu:</h3>
+                    <p>Tạo một Profile Card đẹp mắt sử dụng HTML và CSS đã học.</p>
+                </div>
+
+                <div class="requirement">
+                    <h3>Yêu cầu HTML:</h3>
+                    <ul>
+                        <li>Sử dụng thẻ <code>&lt;div&gt;</code> để tạo container</li>
+                        <li>Thẻ heading cho tên</li>
+                        <li>Thẻ <code>&lt;p&gt;</code> cho chức danh và mô tả</li>
+                        <li>Danh sách <code>&lt;ul&gt;</code> cho skills</li>
+                        <li>Thẻ <code>&lt;button&gt;</code> hoặc <code>&lt;a&gt;</code></li>
+                    </ul>
+                </div>
+
+                <div class="requirement">
+                    <h3>Yêu cầu CSS:</h3>
+                    <ul>
+                        <li>Sử dụng <code>class</code> để style</li>
+                        <li>Áp dụng <code>padding</code>, <code>margin</code></li>
+                        <li>Thêm <code>border-radius</code> để bo góc</li>
+                        <li>Sử dụng <code>box-shadow</code> tạo hiệu ứng</li>
+                        <li>Căn giữa text với <code>text-align</code></li>
+                        <li>Thay đổi màu sắc theo ý thích</li>
+                    </ul>
+                </div>
+
+                <div class="code-editor">
+                    <div class="code-editor-header">
+                        <span>Code của bạn</span>
+                        <button onclick="runCode()">Chạy Code</button>
+                    </div>
+                    <textarea id="userCode"><!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Viết CSS ở đây */
+        body {
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .name {
+            font-size: 24px;
+            color: #333;
+            margin: 0 0 5px 0;
+        }
+
+        .title {
+            color: #666;
+            margin: 0 0 15px 0;
+        }
+
+        .description {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Thêm style cho skills và button */
+        .skills {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .skills li {
+            background: #e8f4f8;
+            color: #3498db;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Viết HTML ở đây -->
+    <div class="card">
+        <div class="header">
+            <div class="avatar">K</div>
+        </div>
+        <div class="content">
+            <h2 class="name">Nguyễn Văn A</h2>
+            <p class="title">Web Developer</p>
+            <p class="description">
+                Đam mê lập trình và thiết kế web.
+                Luôn học hỏi công nghệ mới.
+            </p>
+            <ul class="skills">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+            <button class="btn">Liên hệ</button>
+        </div>
+    </div>
+</body>
+</html></textarea>
+                </div>
+            </div>
+
+            <!-- RIGHT: Preview + Sample -->
+            <div class="right-panel">
+                <h2>Kết quả của bạn</h2>
+                <div class="preview-header">Preview</div>
+                <div class="preview-content">
+                    <iframe id="preview"></iframe>
+                </div>
+
+                <div class="sample-result">
+                    <h3>Mẫu tham khảo:</h3>
+                    <div class="sample-card">
+                        <div class="avatar">
+                            <div class="avatar-circle">K</div>
+                        </div>
+                        <div class="info">
+                            <div class="name">Nguyễn Văn A</div>
+                            <div class="title">Web Developer</div>
+                            <div class="description">
+                                Đam mê lập trình và thiết kế web.
+                                Luôn học hỏi công nghệ mới.
+                            </div>
+                            <div class="skills">
+                                <span class="skill">HTML</span>
+                                <span class="skill">CSS</span>
+                                <span class="skill">JavaScript</span>
+                            </div>
+                            <button class="btn">Liên hệ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="congrats">
+                    <h3>Chúc mừng bạn đã hoàn thành!</h3>
+                    <p>Bạn đã học xong cơ bản HTML & CSS. Tiếp tục thực hành để giỏi hơn!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="03-thuc-hanh.html" class="nav-btn">&larr; Quay lại</a>
+            <a href="index.html" class="nav-btn home-btn">&uarr; Trang Chủ</a>
+            <a href="01-ly-thuyet-html.html" class="nav-btn">Học lại &rarr;</a>
+        </div>
+    </div>
+
+    <script>
+        function runCode() {
+            const code = document.getElementById('userCode').value;
+            const preview = document.getElementById('preview');
+            const doc = preview.contentDocument || preview.contentWindow.document;
+            doc.open();
+            doc.write(code);
+            doc.close();
+        }
+
+        // Chạy code mẫu khi tải trang
+        window.onload = function() {
+            runCode();
+        }
+    </script>
+</body>
+</html>

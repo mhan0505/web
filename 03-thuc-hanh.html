@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3: Thực Hành HTML & CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .time-estimate {
+            text-align: center;
+            color: white;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .exercise {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .exercise h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #feca57;
+        }
+        .exercise-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .exercise-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        .code-editor {
+            background: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .code-editor-header {
+            background: #323232;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .code-editor-header span {
+            color: #fff;
+            font-size: 14px;
+        }
+        .code-editor-header button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .code-editor-header button:hover {
+            background: #ee5a5a;
+        }
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+        .preview {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .preview-header {
+            background: #f5f5f5;
+            padding: 10px 15px;
+            border-bottom: 2px solid #ddd;
+            font-weight: bold;
+            color: #666;
+        }
+        .preview-content {
+            padding: 20px;
+            min-height: 300px;
+        }
+        iframe {
+            width: 100%;
+            min-height: 300px;
+            border: none;
+        }
+        .instruction {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        .instruction strong {
+            color: #856404;
+        }
+        .hint {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 10px 10px 0;
+            display: none;
+        }
+        .hint strong {
+            color: #0c5460;
+        }
+        .hint-btn {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: white;
+            color: #ff6b6b;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .home-btn {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bài 3: Thực Hành HTML & CSS</h1>
+        <p class="time-estimate">Thời gian thực hành: ~15 phút</p>
+
+        <!-- BÀI TẬP 1 -->
+        <div class="exercise">
+            <h2>Bài tập 1: Tạo tiêu đề và đoạn văn</h2>
+            <div class="instruction">
+                <strong>Yêu cầu:</strong> Tạo một tiêu đề h1 "Xin chào Việt Nam" và một đoạn văn mô tả bên dưới.
+            </div>
+            <div class="exercise-content">
+                <div class="code-editor">
+                    <div class="code-editor-header">
+                        <span>Code HTML</span>
+                        <button onclick="runCode(1)">Chạy Code</button>
+                    </div>
+                    <textarea id="code1"><!-- Viết code HTML ở đây -->
+<h1>Xin chào Việt Nam</h1>
+<p>Đây là đoạn văn mô tả.</p>
+
+<!-- Thử thêm:
+- Thẻ h2, h3
+- Thẻ strong, em
+- Thẻ br để xuống dòng
+--></textarea>
+                </div>
+                <div class="preview">
+                    <div class="preview-header">Kết quả</div>
+                    <div class="preview-content">
+                        <iframe id="preview1"></iframe>
+                    </div>
+                </div>
+            </div>
+            <button class="hint-btn" onclick="toggleHint(1)">Xem gợi ý</button>
+            <div class="hint" id="hint1">
+                <strong>Gợi ý:</strong>
+                <pre>&lt;h1&gt;Xin chào Việt Nam&lt;/h1&gt;
+&lt;p&gt;Việt Nam là một quốc gia &lt;strong&gt;xinh đẹp&lt;/strong&gt; ở Đông Nam Á.&lt;/p&gt;
+&lt;h2&gt;Tiêu đề phụ&lt;/h2&gt;
+&lt;p&gt;Nội dung thêm với &lt;em&gt;chữ nghiêng&lt;/em&gt;.&lt;/p&gt;</pre>
+            </div>
+        </div>
+
+        <!-- BÀI TẬP 2 -->
+        <div class="exercise">
+            <h2>Bài tập 2: Tạo danh sách</h2>
+            <div class="instruction">
+                <strong>Yêu cầu:</strong> Tạo một danh sách món ăn Việt Nam yêu thích (ul) và một danh sách các bước nấu phở (ol).
+            </div>
+            <div class="exercise-content">
+                <div class="code-editor">
+                    <div class="code-editor-header">
+                        <span>Code HTML</span>
+                        <button onclick="runCode(2)">Chạy Code</button>
+                    </div>
+                    <textarea id="code2"><!-- Viết code HTML ở đây -->
+<h2>Món ăn Việt Nam</h2>
+<ul>
+    <li>Phở</li>
+    <li>Bánh mì</li>
+    <li>Bún chả</li>
+</ul>
+
+<h2>Cách nấu phở</h2>
+<ol>
+    <li>Ninh xương</li>
+    <li>Nấu nước dùng</li>
+    <li>Chuẩn bị bánh phở</li>
+</ol></textarea>
+                </div>
+                <div class="preview">
+                    <div class="preview-header">Kết quả</div>
+                    <div class="preview-content">
+                        <iframe id="preview2"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BÀI TẬP 3 -->
+        <div class="exercise">
+            <h2>Bài tập 3: Styling với CSS Inline</h2>
+            <div class="instruction">
+                <strong>Yêu cầu:</strong> Sử dụng style inline để tô màu tiêu đề thành màu đỏ và đoạn văn thành màu xanh.
+            </div>
+            <div class="exercise-content">
+                <div class="code-editor">
+                    <div class="code-editor-header">
+                        <span>Code HTML + CSS Inline</span>
+                        <button onclick="runCode(3)">Chạy Code</button>
+                    </div>
+                    <textarea id="code3"><!-- Thêm style inline vào các thẻ -->
+<h1 style="color: red; text-align: center;">
+    Tiêu đề màu đỏ
+</h1>
+
+<p style="color: blue; font-size: 18px;">
+    Đoạn văn màu xanh
+</p>
+
+<p style="background-color: yellow; padding: 10px;">
+    Văn bản với nền vàng
+</p>
+
+<!-- Thử thay đổi:
+- Màu sắc: red, blue, green, #ff6b6b
+- font-size: 20px, 24px
+- text-align: left, center, right
+--></textarea>
+                </div>
+                <div class="preview">
+                    <div class="preview-header">Kết quả</div>
+                    <div class="preview-content">
+                        <iframe id="preview3"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BÀI TẬP 4 -->
+        <div class="exercise">
+            <h2>Bài tập 4: CSS với thẻ style</h2>
+            <div class="instruction">
+                <strong>Yêu cầu:</strong> Sử dụng thẻ &lt;style&gt; để tạo CSS cho class và element.
+            </div>
+            <div class="exercise-content">
+                <div class="code-editor">
+                    <div class="code-editor-header">
+                        <span>Code HTML + CSS Internal</span>
+                        <button onclick="runCode(4)">Chạy Code</button>
+                    </div>
+                    <textarea id="code4"><style>
+    /* CSS cho thẻ h1 */
+    h1 {
+        color: #ff6b6b;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+    /* CSS cho class */
+    .box {
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        border: 2px solid #ddd;
+    }
+
+    .highlight {
+        background-color: yellow;
+        font-weight: bold;
+    }
+
+    /* CSS cho ID */
+    #special {
+        color: purple;
+        font-size: 20px;
+    }
+</style>
+
+<h1>Tiêu đề được style</h1>
+
+<div class="box">
+    Đây là box 1 với class "box"
+</div>
+
+<div class="box">
+    Box 2 với <span class="highlight">text highlight</span>
+</div>
+
+<p id="special">
+    Đoạn văn với ID đặc biệt
+</p></textarea>
+                </div>
+                <div class="preview">
+                    <div class="preview-header">Kết quả</div>
+                    <div class="preview-content">
+                        <iframe id="preview4"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BÀI TẬP 5 -->
+        <div class="exercise">
+            <h2>Bài tập 5: Box Model - Padding, Margin, Border</h2>
+            <div class="instruction">
+                <strong>Yêu cầu:</strong> Thực hành với padding, margin và border để hiểu Box Model.
+            </div>
+            <div class="exercise-content">
+                <div class="code-editor">
+                    <div class="code-editor-header">
+                        <span>Code HTML + CSS</span>
+                        <button onclick="runCode(5)">Chạy Code</button>
+                    </div>
+                    <textarea id="code5"><style>
+    .container {
+        background: #f5f5f5;
+        padding: 20px;
+    }
+
+    .box1 {
+        background: #ff6b6b;
+        color: white;
+        padding: 20px;
+        margin: 10px;
+        border: 3px solid #c0392b;
+    }
+
+    .box2 {
+        background: #3498db;
+        color: white;
+        padding: 10px 30px; /* trên/dưới trái/phải */
+        margin: 20px 0;
+        border: 5px dashed #2980b9;
+        border-radius: 15px;
+    }
+
+    .box3 {
+        background: #2ecc71;
+        color: white;
+        padding: 30px;
+        margin: 0 auto; /* căn giữa */
+        width: 200px;
+        text-align: center;
+        border-radius: 50px;
+    }
+</style>
+
+<div class="container">
+    <div class="box1">
+        Box 1: padding 20px, margin 10px
+    </div>
+
+    <div class="box2">
+        Box 2: border dashed, border-radius 15px
+    </div>
+
+    <div class="box3">
+        Box 3: căn giữa với margin auto
+    </div>
+</div>
+
+<!-- Thử thay đổi giá trị padding, margin, border --></textarea>
+                </div>
+                <div class="preview">
+                    <div class="preview-header">Kết quả</div>
+                    <div class="preview-content">
+                        <iframe id="preview5"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="02-ly-thuyet-css.html" class="nav-btn">&larr; Quay lại</a>
+            <a href="index.html" class="nav-btn home-btn">&uarr; Trang Chủ</a>
+            <a href="04-bai-tap.html" class="nav-btn">Tiếp theo &rarr;</a>
+        </div>
+    </div>
+
+    <script>
+        function runCode(num) {
+            const code = document.getElementById('code' + num).value;
+            const preview = document.getElementById('preview' + num);
+            const doc = preview.contentDocument || preview.contentWindow.document;
+            doc.open();
+            doc.write(code);
+            doc.close();
+        }
+
+        function toggleHint(num) {
+            const hint = document.getElementById('hint' + num);
+            hint.style.display = hint.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Chạy code mẫu khi tải trang
+        window.onload = function() {
+            for (let i = 1; i <= 5; i++) {
+                runCode(i);
+            }
+        }
+    </script>
+</body>
+</html>

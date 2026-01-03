@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2: Lý Thuyết CSS Cơ Bản</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #11998e;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #38ef7d;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #11998e;
+            color: #0f8a7e;
+        }
+        h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+        }
+        .theory-box {
+            background: #f0fff4;
+            border-left: 5px solid #11998e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .code-box {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        .selector { color: #fc8181; }
+        .property { color: #63b3ed; }
+        .value { color: #68d391; }
+        .comment { color: #718096; }
+
+        .result-box {
+            background: #e6fffa;
+            border: 2px dashed #38b2ac;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .result-box h4 {
+            color: #38b2ac;
+            margin-bottom: 10px;
+        }
+        .tip {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .tip strong {
+            color: #d97706;
+        }
+        .demo-box {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #11998e;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            flex-wrap: wrap;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(17, 153, 142, 0.4);
+        }
+        .home-btn {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .home-btn:hover {
+            box-shadow: 0 10px 20px rgba(26, 26, 46, 0.4);
+        }
+        .time-estimate {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .color-demo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        .color-box {
+            width: 80px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bài 2: CSS Cơ Bản</h1>
+        <p class="time-estimate">Thời gian học: ~20 phút</p>
+
+        <!-- PHẦN 1: CSS LÀ GÌ -->
+        <h2>1. CSS là gì?</h2>
+        <div class="theory-box">
+            <p><strong>CSS</strong> (Cascading Style Sheets) là ngôn ngữ định dạng giao diện cho trang web.</p>
+            <p>CSS giúp thay đổi <strong>màu sắc, kích thước, vị trí, bố cục</strong> của các phần tử HTML.</p>
+        </div>
+
+        <!-- PHẦN 2: CÁCH THÊM CSS -->
+        <h2>2. Ba cách thêm CSS</h2>
+
+        <h3>2.1 Inline CSS (Trong thẻ HTML)</h3>
+        <div class="code-box">
+            <pre><span class="selector">&lt;p</span> <span class="property">style</span>=<span class="value">"color: red; font-size: 20px;"</span><span class="selector">&gt;</span>
+    Văn bản đỏ
+<span class="selector">&lt;/p&gt;</span></pre>
+        </div>
+
+        <h3>2.2 Internal CSS (Trong thẻ &lt;style&gt;)</h3>
+        <div class="code-box">
+            <pre><span class="selector">&lt;head&gt;</span>
+    <span class="selector">&lt;style&gt;</span>
+        <span class="selector">p</span> {
+            <span class="property">color</span>: <span class="value">blue</span>;
+            <span class="property">font-size</span>: <span class="value">18px</span>;
+        }
+    <span class="selector">&lt;/style&gt;</span>
+<span class="selector">&lt;/head&gt;</span></pre>
+        </div>
+
+        <h3>2.3 External CSS (File riêng)</h3>
+        <div class="code-box">
+            <pre><span class="comment">&lt;!-- Trong file HTML --&gt;</span>
+<span class="selector">&lt;head&gt;</span>
+    <span class="selector">&lt;link</span> <span class="property">rel</span>=<span class="value">"stylesheet"</span> <span class="property">href</span>=<span class="value">"style.css"</span><span class="selector">&gt;</span>
+<span class="selector">&lt;/head&gt;</span>
+
+<span class="comment">/* Trong file style.css */</span>
+<span class="selector">p</span> {
+    <span class="property">color</span>: <span class="value">green</span>;
+}</pre>
+        </div>
+
+        <div class="tip">
+            <strong>Khuyến nghị:</strong> Sử dụng External CSS cho dự án thực tế để code sạch và dễ bảo trì!
+        </div>
+
+        <!-- PHẦN 3: CÚ PHÁP CSS -->
+        <h2>3. Cú pháp CSS</h2>
+        <div class="code-box">
+            <pre><span class="selector">selector</span> {
+    <span class="property">property</span>: <span class="value">value</span>;
+    <span class="property">property2</span>: <span class="value">value2</span>;
+}
+
+<span class="comment">/* Ví dụ thực tế */</span>
+<span class="selector">h1</span> {
+    <span class="property">color</span>: <span class="value">blue</span>;
+    <span class="property">font-size</span>: <span class="value">32px</span>;
+    <span class="property">text-align</span>: <span class="value">center</span>;
+}</pre>
+        </div>
+
+        <!-- PHẦN 4: SELECTORS -->
+        <h2>4. CSS Selectors (Bộ chọn)</h2>
+
+        <h3>4.1 Element Selector</h3>
+        <div class="code-box">
+            <pre><span class="comment">/* Chọn tất cả thẻ p */</span>
+<span class="selector">p</span> {
+    <span class="property">color</span>: <span class="value">red</span>;
+}
+
+<span class="comment">/* Chọn tất cả thẻ h1 */</span>
+<span class="selector">h1</span> {
+    <span class="property">font-size</span>: <span class="value">24px</span>;
+}</pre>
+        </div>
+
+        <h3>4.2 Class Selector (.)</h3>
+        <div class="code-box">
+            <pre><span class="comment">/* CSS */</span>
+<span class="selector">.highlight</span> {
+    <span class="property">background-color</span>: <span class="value">yellow</span>;
+}
+
+<span class="selector">.text-red</span> {
+    <span class="property">color</span>: <span class="value">red</span>;
+}
+
+<span class="comment">&lt;!-- HTML --&gt;</span>
+&lt;p <span class="property">class</span>=<span class="value">"highlight"</span>&gt;Được highlight&lt;/p&gt;
+&lt;p <span class="property">class</span>=<span class="value">"text-red highlight"</span>&gt;Đỏ và highlight&lt;/p&gt;</pre>
+        </div>
+
+        <h3>4.3 ID Selector (#)</h3>
+        <div class="code-box">
+            <pre><span class="comment">/* CSS */</span>
+<span class="selector">#header</span> {
+    <span class="property">background</span>: <span class="value">#333</span>;
+    <span class="property">color</span>: <span class="value">white</span>;
+}
+
+<span class="comment">&lt;!-- HTML --&gt;</span>
+&lt;div <span class="property">id</span>=<span class="value">"header"</span>&gt;Header duy nhất&lt;/div&gt;</pre>
+        </div>
+
+        <div class="tip">
+            <strong>Ghi nhớ:</strong>
+            <ul>
+                <li><code>class</code> - Có thể dùng nhiều lần, chọn bằng dấu chấm (.)</li>
+                <li><code>id</code> - Chỉ dùng 1 lần trên trang, chọn bằng dấu thăng (#)</li>
+            </ul>
+        </div>
+
+        <!-- PHẦN 5: THUỘC TÍNH PHỔ BIẾN -->
+        <h2>5. Các thuộc tính CSS phổ biến</h2>
+
+        <h3>5.1 Màu sắc</h3>
+        <div class="code-box">
+            <pre><span class="comment">/* Tên màu */</span>
+<span class="property">color</span>: <span class="value">red</span>;
+<span class="property">color</span>: <span class="value">blue</span>;
+
+<span class="comment">/* Mã HEX */</span>
+<span class="property">color</span>: <span class="value">#ff0000</span>;  <span class="comment">/* Đỏ */</span>
+<span class="property">color</span>: <span class="value">#00ff00</span>;  <span class="comment">/* Xanh lá */</span>
+<span class="property">color</span>: <span class="value">#0000ff</span>;  <span class="comment">/* Xanh dương */</span>
+
+<span class="comment">/* RGB */</span>
+<span class="property">color</span>: <span class="value">rgb(255, 0, 0)</span>;
+
+<span class="comment">/* RGBA (có độ trong suốt) */</span>
+<span class="property">color</span>: <span class="value">rgba(255, 0, 0, 0.5)</span>;</pre>
+        </div>
+
+        <div class="color-demo">
+            <div class="color-box" style="background: #ff0000;">#ff0000</div>
+            <div class="color-box" style="background: #00ff00;">#00ff00</div>
+            <div class="color-box" style="background: #0000ff;">#0000ff</div>
+            <div class="color-box" style="background: #ff6b6b;">#ff6b6b</div>
+            <div class="color-box" style="background: #4ecdc4;">#4ecdc4</div>
+            <div class="color-box" style="background: #333333;">#333333</div>
+        </div>
+
+        <h3>5.2 Font chữ</h3>
+        <div class="code-box">
+            <pre><span class="selector">p</span> {
+    <span class="property">font-family</span>: <span class="value">Arial, sans-serif</span>;
+    <span class="property">font-size</span>: <span class="value">16px</span>;
+    <span class="property">font-weight</span>: <span class="value">bold</span>;  <span class="comment">/* normal, bold, 100-900 */</span>
+    <span class="property">font-style</span>: <span class="value">italic</span>;
+    <span class="property">text-align</span>: <span class="value">center</span>;  <span class="comment">/* left, right, center, justify */</span>
+    <span class="property">text-decoration</span>: <span class="value">underline</span>;  <span class="comment">/* none, underline, line-through */</span>
+    <span class="property">line-height</span>: <span class="value">1.5</span>;
+}</pre>
+        </div>
+
+        <h3>5.3 Background</h3>
+        <div class="code-box">
+            <pre><span class="selector">div</span> {
+    <span class="property">background-color</span>: <span class="value">#f0f0f0</span>;
+    <span class="property">background-image</span>: <span class="value">url('image.jpg')</span>;
+    <span class="property">background-size</span>: <span class="value">cover</span>;  <span class="comment">/* cover, contain, 100px */</span>
+    <span class="property">background-position</span>: <span class="value">center</span>;
+    <span class="property">background-repeat</span>: <span class="value">no-repeat</span>;
+}</pre>
+        </div>
+
+        <h3>5.4 Kích thước</h3>
+        <div class="code-box">
+            <pre><span class="selector">div</span> {
+    <span class="property">width</span>: <span class="value">300px</span>;
+    <span class="property">height</span>: <span class="value">200px</span>;
+    <span class="property">max-width</span>: <span class="value">100%</span>;
+    <span class="property">min-height</span>: <span class="value">50px</span>;
+}
+
+<span class="comment">/* Đơn vị thường dùng */</span>
+<span class="comment">/* px - pixel (cố định) */</span>
+<span class="comment">/* % - phần trăm theo phần tử cha */</span>
+<span class="comment">/* em - theo font-size phần tử cha */</span>
+<span class="comment">/* rem - theo font-size root (html) */</span>
+<span class="comment">/* vh/vw - % viewport height/width */</span></pre>
+        </div>
+
+        <!-- PHẦN 6: BOX MODEL -->
+        <h2>6. Box Model (Mô hình hộp)</h2>
+        <div class="theory-box">
+            <p>Mọi phần tử HTML đều là một "hộp" với 4 phần:</p>
+            <ul>
+                <li><strong>Content</strong> - Nội dung bên trong</li>
+                <li><strong>Padding</strong> - Khoảng đệm (trong border)</li>
+                <li><strong>Border</strong> - Viền</li>
+                <li><strong>Margin</strong> - Khoảng cách ngoài</li>
+            </ul>
+        </div>
+
+        <div class="demo-box" style="text-align: center;">
+            <div style="background: #ffcccc; padding: 20px; display: inline-block;">
+                <div style="background: #ffffcc; padding: 20px; border: 5px solid #333;">
+                    <div style="background: #ccffcc; padding: 20px;">
+                        <div style="background: white; padding: 20px;">
+                            Content
+                        </div>
+                        <small>Padding</small>
+                    </div>
+                </div>
+                <small>Border</small>
+            </div>
+            <br>
+            <small>Margin</small>
+        </div>
+
+        <div class="code-box">
+            <pre><span class="selector">div</span> {
+    <span class="comment">/* Padding */</span>
+    <span class="property">padding</span>: <span class="value">20px</span>;  <span class="comment">/* Tất cả các cạnh */</span>
+    <span class="property">padding</span>: <span class="value">10px 20px</span>;  <span class="comment">/* Trên/dưới Trái/phải */</span>
+    <span class="property">padding</span>: <span class="value">10px 20px 15px 25px</span>;  <span class="comment">/* Trên Phải Dưới Trái */</span>
+    <span class="property">padding-top</span>: <span class="value">10px</span>;
+    <span class="property">padding-right</span>: <span class="value">20px</span>;
+
+    <span class="comment">/* Margin */</span>
+    <span class="property">margin</span>: <span class="value">20px</span>;
+    <span class="property">margin</span>: <span class="value">0 auto</span>;  <span class="comment">/* Căn giữa */</span>
+
+    <span class="comment">/* Border */</span>
+    <span class="property">border</span>: <span class="value">2px solid #333</span>;
+    <span class="property">border-radius</span>: <span class="value">10px</span>;  <span class="comment">/* Bo góc */</span>
+}</pre>
+        </div>
+
+        <!-- PHẦN 7: DISPLAY -->
+        <h2>7. Display</h2>
+        <div class="code-box">
+            <pre><span class="comment">/* Block - Chiếm cả dòng */</span>
+<span class="property">display</span>: <span class="value">block</span>;
+
+<span class="comment">/* Inline - Trên cùng dòng, không đặt width/height */</span>
+<span class="property">display</span>: <span class="value">inline</span>;
+
+<span class="comment">/* Inline-block - Trên cùng dòng, đặt được width/height */</span>
+<span class="property">display</span>: <span class="value">inline-block</span>;
+
+<span class="comment">/* None - Ẩn phần tử */</span>
+<span class="property">display</span>: <span class="value">none</span>;
+
+<span class="comment">/* Flex - Layout linh hoạt (học ở bài sau) */</span>
+<span class="property">display</span>: <span class="value">flex</span>;</pre>
+        </div>
+
+        <!-- BẢNG TỔNG HỢP -->
+        <h2>8. Bảng tổng hợp thuộc tính</h2>
+        <table>
+            <tr>
+                <th>Thuộc tính</th>
+                <th>Mô tả</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>color</td>
+                <td>Màu chữ</td>
+                <td>color: #333;</td>
+            </tr>
+            <tr>
+                <td>background</td>
+                <td>Màu/ảnh nền</td>
+                <td>background: #f0f0f0;</td>
+            </tr>
+            <tr>
+                <td>font-size</td>
+                <td>Cỡ chữ</td>
+                <td>font-size: 16px;</td>
+            </tr>
+            <tr>
+                <td>padding</td>
+                <td>Đệm trong</td>
+                <td>padding: 20px;</td>
+            </tr>
+            <tr>
+                <td>margin</td>
+                <td>Lề ngoài</td>
+                <td>margin: 10px;</td>
+            </tr>
+            <tr>
+                <td>border</td>
+                <td>Viền</td>
+                <td>border: 1px solid #ddd;</td>
+            </tr>
+            <tr>
+                <td>width/height</td>
+                <td>Kích thước</td>
+                <td>width: 100%;</td>
+            </tr>
+            <tr>
+                <td>display</td>
+                <td>Kiểu hiển thị</td>
+                <td>display: flex;</td>
+            </tr>
+        </table>
+
+        <div class="navigation">
+            <a href="01-ly-thuyet-html.html" class="nav-btn">&larr; Quay lại</a>
+            <a href="index.html" class="nav-btn home-btn">&uarr; Trang Chủ</a>
+            <a href="03-thuc-hanh.html" class="nav-btn">Tiếp theo &rarr;</a>
+        </div>
+    </div>
+</body>
+</html>
